@@ -1,4 +1,4 @@
-const endPointSearch = 'http://api.tvmaze.com/singlesearch/shows?q={searchValue}&embed=episodes'
+const endPointSearch = 'https://api.tvmaze.com/singlesearch/shows?q={searchValue}&embed=episodes'
 
 const TvMaze = {
     getEpisodes :  async function (searchValue) {
