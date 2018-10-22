@@ -19,8 +19,8 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="SearchBar">
-        <input onChange={this.props.handleInputValueChange} defaultValue = {this.props.searchValue} placeholder="Skriv namnet på en serie" />
-        <a  onClick={this.handleGetTracks}> SEARCH </a>
+        <input onChange={this.handleInputValueChange} defaultValue = {this.props.searchValue} placeholder="Skriv namnet på en serie" />
+        <a  onClick={this.handleGetEpisodes}> SEARCH </a>
       </div>
     );
   }

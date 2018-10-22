@@ -8,7 +8,7 @@ class EpisodeDetail extends Component {
   render() {
     return (
       <div className="EpisodeDetail">
-       <h2>Avsnitt</h2>
+       <h2>Mer info</h2>
        <div className="Episode">
          <div className="Episode-information">
            <h3>{this.props.episode.title}</h3>

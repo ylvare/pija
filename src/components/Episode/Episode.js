@@ -16,10 +16,13 @@ handleViewDetail(e){
   render() {
     return (
       <div className="Episode">
-        <div className="Episode-information">
-          <h3>{this.props.episode.title}</h3>
-          <p>Säsong {this.props.episode.season} | Avsnitt {this.props.episode.e_Nbr}</p>
-        </div>
+          <div className = "Row">
+            <div className="Episode-information">
+             <h3>{this.props.episode.title}</h3>
+              <p>Säsong {this.props.episode.season} | Avsnitt {this.props.episode.e_Nbr}</p>
+            </div>
+           <img src={this.props.episode.photo ? this.props.episode.photo.medium : ''}  height="65px"/>
+          </div>
         <a className="Episode-action" onClick={this.props.viewEpisodeDetail}>+</a>
       </div>
     );

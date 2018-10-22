@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar/SearchBar'
 import EpisodeList from './components/EpisodeList/EpisodeList'
 import EpisodeDetail from './components/EpisodeDetail/EpisodeDetail'
+import {TvMaze} from './util/TvMaze'
 
 
 const episode = {
@@ -39,6 +40,10 @@ class App extends Component {
   }
 
   async getEpisodes(){
+    console.log("hej hopp")
+    console.log(this.state.searchValue)
+    const episodeList = await TvMaze.getEpisodes(this.state.searchValue)
+    console.log(episodeList)
       this.setState({
           episodeList: episodeList
         })
@@ -49,7 +54,7 @@ class App extends Component {
       <div>
         <h1>Pi<span className="highlight">Ja</span> TV Search</h1>
           <div className="App">
-            <SearchBar />
+            <SearchBar searchValue = {this.state.searchValue} handleSearchValueChange = {this.handleSearchValueChange} getEpisodes ={this.getEpisodes} />
             <div className="Result">
              <EpisodeList episodeList ={this.state.episodeList}/>
              <EpisodeDetail episode ={this.state.episodeInDetail}/>
