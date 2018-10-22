@@ -2,10 +2,7 @@ const endPointSearch = 'http://api.tvmaze.com/singlesearch/shows?q={searchValue}
 
 const TvMaze = {
     getEpisodes :  async function (searchValue) {
-      console.log("in get episodes")
       const q = endPointSearch.replace("{searchValue}", searchValue)
-      console.log(q)
-      const q2 = 'http://api.tvmaze.com/singlesearch/shows?q=girls&embed=episodes'
       return fetch(q, {
       }).then(response => {
         if (response.ok){
@@ -23,7 +20,11 @@ const TvMaze = {
                           photo: episode.image,
                           title: episode.name,
                           season: episode.season,
-                          e_Nbr: episode.number
+                          e_Nbr: episode.number,
+                          runtime: episode.runtime,
+                          summary: episode.summary,
+                          airdate: episode.airdate,
+                          airstamp: episode.airstamp
                        }
             }))
         }

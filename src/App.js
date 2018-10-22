@@ -6,21 +6,13 @@ import EpisodeDetail from './components/EpisodeDetail/EpisodeDetail'
 import {TvMaze} from './util/TvMaze'
 
 
-const episode = {
-      title:'Going back to the dark',
-      season:'2',
-      e_Nbr:'3'
-}
-
-const episodeList = [episode,episode,episode]
-
 class App extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      episodeList:episodeList,
-      episodeInDetail:episode,
+      episodeList:[],
+      episodeInDetail: false,
       searchValue: ''
     }
 
@@ -30,7 +22,10 @@ class App extends Component {
   }
 
 
-  viewEpisodeDetail(){
+  viewEpisodeDetail(episode){
+    this.setState({
+        episodeInDetail: episode
+      })
   }
 
   handleSearchValueChange(searchValue){
@@ -40,12 +35,11 @@ class App extends Component {
   }
 
   async getEpisodes(){
-    console.log("hej hopp")
-    console.log(this.state.searchValue)
     const episodeList = await TvMaze.getEpisodes(this.state.searchValue)
     console.log(episodeList)
       this.setState({
-          episodeList: episodeList
+          episodeList: episodeList,
+          episodeInDetail: false
         })
      }
 
@@ -56,7 +50,7 @@ class App extends Component {
           <div className="App">
             <SearchBar searchValue = {this.state.searchValue} handleSearchValueChange = {this.handleSearchValueChange} getEpisodes ={this.getEpisodes} />
             <div className="Result">
-             <EpisodeList episodeList ={this.state.episodeList}/>
+             <EpisodeList episodeList ={this.state.episodeList} viewEpisodeDetail={this.viewEpisodeDetail}/>
              <EpisodeDetail episode ={this.state.episodeInDetail}/>
             </div>
           </div>
